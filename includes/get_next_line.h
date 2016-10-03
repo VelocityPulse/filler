@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  <>                                        +#+  +:+       +#+        */
+/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/01 18:41:04 by                   #+#    #+#             */
-/*   Updated: 2016/10/03 18:48:35 by                  ###   ########.fr       */
+/*   Created: 2015/12/18 14:44:27 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/10/02 20:56:48 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_H
-# define HEADER_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-#include "debug.h"
-
+# include <fcntl.h>
 # include <unistd.h>
-
+# include <stdlib.h>
 # include "../libft/libft.h"
-# include "get_next_line.h"
 
-# define	P_ID_1 0
-# define	P_ID_2 1
+# define BUFF_SIZE 1
 
-typedef struct	s_filler
+typedef struct	s_gnl
 {
-	t_bool		player_id;
-	int			size_x;
-	int			size_y;
-	char		**tab;
-}				t_filler;
+	char		*buff;
+	char		*temp;
+	int			ret;
+}				t_gnl;
 
+int				get_next_line(const int fd, char **line);
 
 #endif

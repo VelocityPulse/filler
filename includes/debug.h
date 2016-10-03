@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   debug.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/01 18:41:04 by                   #+#    #+#             */
-/*   Updated: 2016/10/03 18:48:35 by                  ###   ########.fr       */
+/*   Created: 2016/01/24 22:03:34 by                   #+#    #+#             */
+/*   Updated: 2016/06/17 12:40:00 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_H
-# define HEADER_H
+#ifndef _DEBUG_H
+# define _DEBUG_H
 
-#include "debug.h"
+# include <stdio.h>
 
-# include <unistd.h>
-
-# include "../libft/libft.h"
-# include "get_next_line.h"
-
-# define	P_ID_1 0
-# define	P_ID_2 1
-
-typedef struct	s_filler
-{
-	t_bool		player_id;
-	int			size_x;
-	int			size_y;
-	char		**tab;
-}				t_filler;
-
+# define PAUSE while (1) sleep(1000000000);
+# define BN ft_putchar('\n');
+# define YOLO ft_putstr("\n\nYOLO\n");
+# define YOLO1 ft_putstr("\nYOLO1 -\n");
+# define YOLO2 ft_putstr("YOLO2 --\n");
+# define TEST ft_putstr("\n\ntest\n");
+# define YOLOO ft_putstr("\n\nYOLO---------------\n");
 
 #endif

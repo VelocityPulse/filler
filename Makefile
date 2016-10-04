@@ -6,12 +6,13 @@
 #*   By:  <>                                        +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/10/01 21:19:23 by                   #+#    #+#             *#
-#*   Updated: 2016/10/02 20:48:04 by                  ###   ########.fr       *#
+#*   Updated: 2016/10/04 19:34:49 by                  ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
 FILES =				main.c \
-					get_next_line.c
+					get_next_line.c \
+					filler.c
 
 SRCS =				$(addprefix srcs/, $(FILES))
 
@@ -25,7 +26,7 @@ LIBFT =				libft/libft.a
 
 DEBUGSEGFAULT =		-fsanitize=address
 
-FLAGS =				-Wall -Wextra -Werror $(DEBUGSEGFAULT)
+FLAGS =				-Wall -Wextra -Werror #$(DEBUGSEGFAULT)
 
 RM =				rm -rf
 

@@ -20,8 +20,8 @@
 # include "../libft/libft.h"
 # include "get_next_line.h"
 
-# define	P_ID_1 0
-# define	P_ID_2 1
+# define	P_ID_1 O
+# define	P_ID_2 X
 
 # define	MARGIN 4
 
@@ -32,18 +32,27 @@ typedef struct	s_piece
 	char	**tab;
 }				t_piece;
 
+typedef struct	s_tray
+{
+	int		size_x;
+	int		size_y;
+	char	**tab;
+}				t_tray;
+
 typedef struct	s_filler
 {
-	t_bool		player_id;
+	char		ally;
+	char		ennemy;
 	t_piece		piece;
-	int			size_x;
-	int			size_y;
-	char		**tab;
-	t_pt		p1_pos;
-	t_pt		p2_pos;
+	t_tray		tray;
+	t_tray		last_tray;
+	t_pt		ally_pos;
+	t_pt		ennemy_pos;
 }				t_filler;
 
 void	filler(t_filler *f);
+
+void	apply_first_round(t_filler *f);
 
 
 #endif

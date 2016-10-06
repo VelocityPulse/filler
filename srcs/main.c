@@ -19,9 +19,15 @@ static void		process_first_line(t_filler *f)
 	line = NULL;
 	get_next_line(0, &line);
 	if (ft_strncmp(line, "$$$ exec p1", 11))
-		f->player_id = P_ID_1;
+	{
+		f->ally = 'O';
+		f->ennemy = 'X';
+	}
 	else if (ft_strncmp(line, "$$$ exec p2", 11))
-		f->player_id = P_ID_2;
+	{
+		f->ally = 'X';
+		f->ennemy = 'O';
+	}
 	ft_memdel((void **)&line);
 }
 
@@ -33,10 +39,10 @@ static void		process_sizes(t_filler *f)
 	line = NULL;
 	get_next_line(0, &line);
 	i = 8;
-	f->size_y = ft_atoi(&line[i]);
+	f->tray.size_y = ft_atoi(&line[i]);
 	while (line[++i] != ' ')
 		;
-	f->size_x = ft_atoi(&line[++i]) + MARGIN;
+	f->tray.size_x = ft_atoi(&line[++i]) + MARGIN;
 	ft_memdel((void **)&line);
 }
 
@@ -49,9 +55,9 @@ static void		process_tab(t_filler *f)
 	i = -1;
 	get_next_line(0, &line);
 	ft_memdel((void **)&line);
-	f->tab = (char **)ft_memalloc(sizeof(char *) * f->size_y);
-	while (++i < f->size_y)
-		get_next_line(0, &f->tab[i]);
+	f->tray.tab = (char **)ft_memalloc(sizeof(char *) * f->tray.size_y);
+	while (++i < f->tray.size_y)
+		get_next_line(0, &f->tray.tab[i]);
 }
 
 static void		process_piece(t_filler *f)
@@ -77,6 +83,8 @@ int				main(void)
 {
 	t_filler	f;
 
+	f.last_tray.tab = NULL;
+	f.tray.tab = NULL;
 	process_first_line(&f);
 	while (1)
 	{
@@ -84,7 +92,8 @@ int				main(void)
 		process_tab(&f);
 		process_piece(&f);
 		filler(&f);
-		ft_memdel2((void ***)&f.tab);
+		ft_memdel2((void ***)&f.last_tray.tab);
+		f.last_tray.tab = f.tray.tab;
 		ft_memdel2((void ***)&f.piece.tab);
 	}
 	return (0);

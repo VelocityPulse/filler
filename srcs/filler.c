@@ -6,7 +6,7 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 18:12:38 by                   #+#    #+#             */
-/*   Updated: 2016/10/04 22:01:03 by                  ###   ########.fr       */
+/*   Updated: 2016/10/06 20:03:14 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,17 @@ void	filler(t_filler *f)
 
 
 	j = -1;
-	while (++j < f->size_y)
+	if (f->last_tray.tab == NULL)
+		apply_first_round(f);
+	while (++j < f->tray.size_y)
 	{
 		i = MARGIN - 1;
-		while (++i < f->size_x)
+		while (++i < f->tray.size_x)
 		{
-			if (f->tab[j][i] == 'o')
+			if (f->tray.tab[j][i] == 'o')
 				ft_putstr("1 1\n");
-			else if (f->tab[j][i] == 'x')
+			else if (f->tray.tab[j][i] == 'x')
 				ft_putstr("2 2\n");
 		}
 	}
-	ft_putstr("8 1\n");
 }

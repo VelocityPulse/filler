@@ -64,6 +64,7 @@ static void		process_piece(t_filler *f)
 {
 	char	*line;
 	int		i;
+	int		j;
 
 	line = NULL;
 	get_next_line(0, &line);
@@ -77,6 +78,13 @@ static void		process_piece(t_filler *f)
 	i = -1;
 	while (++i < f->piece.size_y)
 		get_next_line(0, &f->piece.tab[i]);
+	j = -1;
+	while (!(i = 0) && f->piece.tab[++j][i] != '*' && j < f->piece.size_y)
+	{
+		while (f->piece.tab[j][i++] != '*' && i < f->piece.size_x)
+			;
+	}
+	f->piece.form_pos = ft_make_pt(i, j);
 }
 
 int				main(void)

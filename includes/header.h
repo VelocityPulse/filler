@@ -6,7 +6,7 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/01 18:41:04 by                   #+#    #+#             */
-/*   Updated: 2016/10/04 21:32:52 by                  ###   ########.fr       */
+/*   Updated: 2016/10/07 18:35:15 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct	s_piece
 {
 	int		size_x;
 	int		size_y;
+	t_pt	form_pos;
 	char	**tab;
 }				t_piece;
 
@@ -46,13 +47,21 @@ typedef struct	s_filler
 	t_piece		piece;
 	t_tray		tray;
 	t_tray		last_tray;
-	t_pt		ally_pos;
-	t_pt		ennemy_pos;
+	t_pt		ally_spawn;
+	t_pt		ennemy_spawn;
 }				t_filler;
 
 void	filler(t_filler *f);
+void	first_round(t_filler *f);
+t_pt	get_most_close(t_filler *f, t_pt ally_pos);
 
-void	apply_first_round(t_filler *f);
+int		check_pos_piece(t_filler *f, t_piece p, t_pt pos);
 
 
 #endif
+
+
+
+
+
+

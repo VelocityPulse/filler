@@ -12,7 +12,9 @@
 
 FILES =				main.c \
 					get_next_line.c \
-					filler.c
+					filler.c \
+					process.c \
+					get_most_close.c
 
 SRCS =				$(addprefix srcs/, $(FILES))
 

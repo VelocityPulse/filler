@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/07 15:49:55 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/10/07 18:28:11 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/10/08 16:42:38 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ t_pt			get_most_close(t_filler *f, t_pt ally_pos)
 		i = MARGIN - 1;
 		while (++i < f->tray.size_x)
 		{
-			if (tab[j][i] == f->ennemy && ft_abs(ally_pos.x - i) <= tmp.x &&
-				ft_abs(ally_pos.y - j) <= tmp.y)
+			if (tab[j][i] == f->ennemy && (int)ft_abs(ally_pos.x - i) <= tmp.x &&
+				(int)ft_abs(ally_pos.y - j) <= tmp.y)
 				tmp = ft_make_pt(i, j);
 		}
 	}

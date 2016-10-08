@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/07 15:48:24 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/10/07 19:48:57 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/10/08 18:03:47 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,42 @@
 
 static t_pt		apply_first_round(t_filler *f, t_piece p)
 {
-	t_pt	c;
-	t_pt	m;
+	t_pt	pos;
+	t_pt	mvmt;
 	t_pt	cpt;
 
-	m.x = (f->ally_spawn.x > f->ennemy_spawn.x ? -1 : 1);
-	m.y = (f->ally_spawn.y > f->ennemy_spawn.y ? -1 : 1);
-	c.x = (m.x == -1 ? p.size_x + 1 : -1);
-	c.y = (m.y == -1 ? p.size_y + 1 : -1);
+	mvmt.x = (f->ally_spawn.x > f->ennemy_spawn.x ? 1 : -1);
+	mvmt.y = (f->ally_spawn.y > f->ennemy_spawn.y ? 1 : -1);
+	pos.x = (mvmt.x == 1 ? -(p.size_x - 1) : 0);
+	pos.y = (mvmt.y == 1 ? -(p.size_y - 1) : 0);
 	cpt = ft_make_pt(-1, -1);
 	while (++cpt.y < p.size_y)
 	{
 		cpt.x = -1;
 		while (++cpt.x < p.size_x)
 		{
-			if (check_pos_piece(f, p, c))
-				return (c);
-			c.x += m.x;
+			if (check_pos_piece(f, p, ft_add_pt(pos, f->ally_spawn)))
+				return (ft_add_pt(pos, f->ally_spawn));
+			pos.x += mvmt.x;
 		}
-		c.y += m.y;
+		pos.y += mvmt.y;
 	}
-	return (c);
+	return (ft_add_pt(pos, f->ally_spawn));
 }
 
 static t_pt		get_spawn(t_filler *f, char player)
 {
-	int		i;
-	int		j;
+	int		x;
+	int		y;
 
-	j = -1;
-	while (++j < f->tray.size_y)
+	y = -1;
+	while (++y < f->tray.size_y)
 	{
-		i = MARGIN - 1;
-		while (++i < f->tray.size_x)
+		x = MARGIN - 1;
+		while (++x < f->tray.size_x)
 		{
-			if (f->tray.tab[j][i] == player)
-				return (ft_make_pt(i, j));
+			if (f->tray.tab[y][x] == player)
+				return (ft_make_pt(x - MARGIN, y));
 		}
 	}
 	return (ft_make_pt(-1, -1));

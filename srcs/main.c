@@ -18,12 +18,12 @@ static void		process_first_line(t_filler *f)
 
 	line = NULL;
 	get_next_line(0, &line);
-	if (ft_strncmp(line, "$$$ exec p1", 11))
+	if (!ft_strncmp(line, "$$$ exec p1", 11))
 	{
 		f->ally = 'O';
 		f->ennemy = 'X';
 	}
-	else if (ft_strncmp(line, "$$$ exec p2", 11))
+	else if (!ft_strncmp(line, "$$$ exec p2", 11))
 	{
 		f->ally = 'X';
 		f->ennemy = 'O';
@@ -99,6 +99,7 @@ int				main(void)
 		process_sizes(&f);
 		process_tab(&f);
 		process_piece(&f);
+		YOLO
 		filler(&f);
 		ft_memdel2((void ***)&f.last_tray.tab);
 		f.last_tray.tab = f.tray.tab;

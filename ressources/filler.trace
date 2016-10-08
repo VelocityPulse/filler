@@ -1,4 +1,7 @@
-seed = 8062
-players/abanlin.filler won
+seed = 7969
+../cchameyr.filler: Segfault at 0
+X: error on input
+../cchameyr.filler: Segfault at 0
+../cchameyr.filler won
 Score:
-43AGAINST113
+0AGAINST0

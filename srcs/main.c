@@ -31,6 +31,8 @@ static void		process_first_line(t_filler *f)
 	ft_memdel((void **)&line);
 }
 
+#include <strings.h>
+
 static void		process_sizes(t_filler *f)
 {
 	char	*line;
@@ -38,6 +40,14 @@ static void		process_sizes(t_filler *f)
 
 	line = NULL;
 	get_next_line(0, &line);
+	if (ft_strlen(line) > 8)
+		i = 8;
+	else
+	{
+		char	*str = ft_strnew(30);
+		sprintf(str, "%s%s%s", "echo \"", line, "\" >> TEST1");
+		system(str);
+	}
 	i = 8;
 	f->tray.size_y = ft_atoi(&line[i]);
 	while (line[++i] != ' ')
@@ -64,10 +74,17 @@ static void		process_piece(t_filler *f)
 {
 	char	*line;
 	int		i;
-	int		j;
 
 	line = NULL;
 	get_next_line(0, &line);
+	if (ft_strlen(line) > 6)
+		i = 6;
+	else
+	{
+		char	*str = ft_strnew(30);
+		sprintf(str, "%s%s%s", "echo \"", line, "\" >> TEST2");
+		system(str);
+	}
 	i = 6;
 	f->piece.size_y = ft_atoi(&line[i]);
 	while (line[++i] != ' ')
@@ -78,13 +95,6 @@ static void		process_piece(t_filler *f)
 	i = -1;
 	while (++i < f->piece.size_y)
 		get_next_line(0, &f->piece.tab[i]);
-	j = -1;
-	while (!(i = 0) && f->piece.tab[++j][i] != '*' && j < f->piece.size_y)
-	{
-		while (f->piece.tab[j][i++] != '*' && i < f->piece.size_x)
-			;
-	}
-	f->piece.form_pos = ft_make_pt(i, j);
 }
 
 int				main(void)
@@ -99,7 +109,6 @@ int				main(void)
 		process_sizes(&f);
 		process_tab(&f);
 		process_piece(&f);
-		YOLO
 		filler(&f);
 		ft_memdel2((void ***)&f.last_tray.tab);
 		f.last_tray.tab = f.tray.tab;

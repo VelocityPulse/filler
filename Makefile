@@ -29,7 +29,7 @@ LIBFT =				libft/libft.a
 
 DEBUGSEGFAULT =		-fsanitize=address
 
-FLAGS =				-Wall -Wextra -Werror #$(DEBUGSEGFAULT)
+FLAGS =				-Wall -Wextra -Werror $(DEBUGSEGFAULT)
 
 RM =				rm -rf
 

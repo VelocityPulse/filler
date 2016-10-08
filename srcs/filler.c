@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/07 15:47:52 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/10/08 16:46:49 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/10/08 19:00:18 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	filler(t_filler *f)
 {
-	if (f->last_tray.tab == NULL)
+//	if (f->last_tray.tab == NULL)
 		first_round(f);
 }
